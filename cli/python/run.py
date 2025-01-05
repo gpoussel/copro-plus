@@ -83,18 +83,23 @@ def run_codeforces(args):
                     print_output(test_result)
                     continue
                 test_output = test_result.stdout.strip()
-                test_expected_output = (child.parent / child.name.replace('.in', '.out')).read_text(encoding='utf-8').strip()
-                if test_output == test_expected_output:
-                    print(f"{prefix}Test {colored_test_path}: {colored('OK', 'green', attrs=['bold'])}")
+                test_expected_output_file = child.parent / child.name.replace('.in', '.out')
+                if test_expected_output_file.exists():
+                    test_expected_output = (child.parent / child.name.replace('.in', '.out')).read_text(encoding='utf-8').strip()
+                    if test_output == test_expected_output:
+                        print(f"{prefix}Test {colored_test_path}: {colored('OK', 'green', attrs=['bold'])}")
+                    else:
+                        print(f"{prefix}Test {colored_test_path}: {colored('Wrong Answer', 'red', attrs=['bold'])}")
+                        colored_expected_output = colored(test_expected_output, 'grey', attrs=['bold'])
+                        cprint(f"{prefix}Expected:", 'yellow', attrs=['bold'])
+                        print(test_expected_output)
+                        print()
+                        cprint(f"{prefix}Got:", 'yellow', attrs=['bold'])
+                        print_output(test_result)
+                        got_an_error = True
                 else:
-                    print(f"{prefix}Test {colored_test_path}: {colored('Wrong Answer', 'red', attrs=['bold'])}")
-                    colored_expected_output = colored(test_expected_output, 'grey', attrs=['bold'])
-                    cprint(f"{prefix}Expected:", 'yellow', attrs=['bold'])
-                    print(test_expected_output)
-                    print()
-                    cprint(f"{prefix}Got:", 'yellow', attrs=['bold'])
+                    print(f"{prefix}Test {colored_test_path}: {colored('?', 'yellow', attrs=['bold'])}")
                     print_output(test_result)
-                    got_an_error = True
         
         if mode == 'single' and not got_an_error:
             # Copy the source file content into the clipboard
