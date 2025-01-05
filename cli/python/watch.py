@@ -35,6 +35,13 @@ def process_received_json(data_string):
         problem_path = Path(f"codeforces/problems-{problem_number[:-2]}xx/{problem_number}/{problem_letter}")
         colored_name = colored(f"{problem_number}{problem_letter}", 'light_green', attrs=['bold'])
         print(f"Codeforces Gym problem: {colored_name}")
+    elif url.startswith('https://codeforces.com/contest/'):
+        # https://codeforces.com/contest/1/problem/A
+        problem_number = url.split('/')[-3].rjust(4, '0')
+        problem_letter = url.split('/')[-1]
+        problem_path = Path(f"codeforces/problems-{problem_number[:-2]}xx/{problem_number}/{problem_letter}")
+        colored_name = colored(f"{problem_number}{problem_letter}", 'light_green', attrs=['bold'])
+        print(f"Codeforces Contest problem: {colored_name}")
     elif url.startswith('https://www.hackerrank.com/challenges/'):
         # https://www.hackerrank.com/challenges/simple-array-sum/problem?isFullScreen=true
         url = url.replace(r'?isFullScreen=true', '')
