@@ -26,3 +26,7 @@ For Codeforces, options of C++23 are: ([reference](https://codeforces.com/blog/e
 ```bash
 g++ -Wall -Wextra -Wconversion -static -DONLINE_JUDGE -Wl,--stack=268435456 -O2 -std=c++23 -lstdc++exp A.cpp
 ```
+
+## Links
+
+- [Easy Codeforces problems to solve](https://codeforces.com/problemset?order=BY_SOLVED_DESC&tags=0-800)
