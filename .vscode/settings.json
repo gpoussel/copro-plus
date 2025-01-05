@@ -3,5 +3,10 @@
     "iostream": "cpp",
     "cstdio": "cpp",
     "cmath": "cpp"
+  },
+  "files.exclude": {
+    "codeforces/**/*.in": true,
+    "codeforces/**/*.out": true,
+    "codeforces/**/*.exe": true
   }
 }
