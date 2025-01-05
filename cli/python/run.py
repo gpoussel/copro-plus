@@ -26,7 +26,8 @@ def print_output(result):
         print(colored_no_output)
 
 def run_codeforces(args):
-    problem_number = args[-1]
+    forced = '!' in args
+    problem_number = args[0]
     if problem_number[-1].isalpha():
         problem_letters = [problem_number[-1]]
         problem_number = problem_number[:-1]
@@ -101,7 +102,7 @@ def run_codeforces(args):
                     print(f"{prefix}Test {colored_test_path}: {colored('?', 'yellow', attrs=['bold'])}")
                     print_output(test_result)
         
-        if mode == 'single' and not got_an_error:
+        if mode == 'single' and (not got_an_error or forced):
             # Copy the source file content into the clipboard
             subprocess.run(['clip.exe'], input=source_file.read_text(encoding='utf-8'), encoding='utf-8', text=True, capture_output=False)
             print("Source code copied to clipboard")
