@@ -2,7 +2,9 @@ from pathlib import Path
 
 # Codeforces
 
-def codeforces_parse_url(url):
+def codeforces_parse_url(url, name = None):
+    if url.endswith('/problems') and name is not None:
+        url = f"{url}/{name[0].upper()}"
     if url.startswith('https://codeforces.com/problemset/'):
         # https://codeforces.com/problemset/problem/1/A
         problem_number = url.split('/')[-2].rjust(4, '0')

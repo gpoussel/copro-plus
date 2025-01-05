@@ -22,8 +22,9 @@ def generate_cpp_header(data):
 def process_received_json(data_string):
     data = json.loads(data_string)
     url = data['url']
+    name = data['name']
     if url.startswith('https://codeforces.com/'):
-        name, problem_path = codeforces_parse_url(url)
+        name, problem_path = codeforces_parse_url(url, name)
         colored_name = colored(name, 'light_green', attrs=['bold'])
         print(f"Codeforces problem: {colored_name}")
     elif url.startswith('https://www.hackerrank.com/challenges/'):
@@ -72,7 +73,11 @@ class CompetitiveCompanionHandler(http.server.BaseHTTPRequestHandler):
         self.data_string = self.rfile.read(int(self.headers['Content-Length']))
         self.send_response(200)
         self.end_headers()
-        process_received_json(self.data_string)
+        try:
+            process_received_json(self.data_string)
+        except Exception as e:
+            print(f"Error processing data: {e}")
+            print(json.dumps(json.loads(self.data_string), indent=4))
 
 def run_server():
     with http.server.ThreadingHTTPServer((BIND_HOST, BIND_PORT), CompetitiveCompanionHandler) as server:
