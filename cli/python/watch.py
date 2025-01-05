@@ -1,8 +1,9 @@
 from os import linesep
 from pathlib import Path
 from signal import signal, SIGTERM, SIGINT
-from sys import argv, exit
+from sys import exit
 from termcolor import colored, cprint
+from _common import codeforces_parse_url
 import http.server
 import simplejson as json
 
@@ -14,34 +15,17 @@ def signal_handler(signum, frame):
     exit(0)
 
 def generate_cpp_header(data):
-    header = f"// ⚙️ {data['group']}\n"
-    header += f"// 📝 {data['name']}\n"
+    header = f"// {data['group']}\n"
+    header += f"// {data['name']}\n"
     return header.strip()
 
 def process_received_json(data_string):
     data = json.loads(data_string)
     url = data['url']
-    if url.startswith('https://codeforces.com/problemset/'):
-        # https://codeforces.com/problemset/problem/1/A
-        problem_number = url.split('/')[-2].rjust(4, '0')
-        problem_letter = url.split('/')[-1]
-        problem_path = Path(f"codeforces/problems-{problem_number[:-2]}xx/{problem_number}/{problem_letter}")
-        colored_name = colored(f"{problem_number}{problem_letter}", 'light_green', attrs=['bold'])
+    if url.startswith('https://codeforces.com/'):
+        name, problem_path = codeforces_parse_url(url)
+        colored_name = colored(name, 'light_green', attrs=['bold'])
         print(f"Codeforces problem: {colored_name}")
-    elif url.startswith('https://codeforces.com/gym/'):
-        # https://codeforces.com/gym/100001/problem/A
-        problem_number = url.split('/')[-3]
-        problem_letter = url.split('/')[-1]
-        problem_path = Path(f"codeforces/problems-{problem_number[:-2]}xx/{problem_number}/{problem_letter}")
-        colored_name = colored(f"{problem_number}{problem_letter}", 'light_green', attrs=['bold'])
-        print(f"Codeforces Gym problem: {colored_name}")
-    elif url.startswith('https://codeforces.com/contest/'):
-        # https://codeforces.com/contest/1/problem/A
-        problem_number = url.split('/')[-3].rjust(4, '0')
-        problem_letter = url.split('/')[-1]
-        problem_path = Path(f"codeforces/problems-{problem_number[:-2]}xx/{problem_number}/{problem_letter}")
-        colored_name = colored(f"{problem_number}{problem_letter}", 'light_green', attrs=['bold'])
-        print(f"Codeforces Contest problem: {colored_name}")
     elif url.startswith('https://www.hackerrank.com/challenges/'):
         # https://www.hackerrank.com/challenges/simple-array-sum/problem?isFullScreen=true
         url = url.replace(r'?isFullScreen=true', '')
