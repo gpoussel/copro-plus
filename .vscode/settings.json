@@ -2,10 +2,15 @@
   "files.associations": {
     "iostream": "cpp",
     "cstdio": "cpp",
-    "cmath": "cpp"
+    "cmath": "cpp",
+    "xstring": "cpp",
+    "algorithm": "cpp",
+    "charconv": "cpp",
+    "string": "cpp",
+    "ostream": "cpp"
   },
+  "C_Cpp.default.cppStandard": "c++23",
   "files.exclude": {
-    "codeforces/**/*.in": true,
     "codeforces/**/*.out": true,
     "codeforces/**/*.exe": true
   }
