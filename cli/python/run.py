@@ -73,7 +73,7 @@ def run_codeforces(args):
                     print(f"{prefix}Test {colored_test_path}: {colored('Time Limit Exceeded', 'red', attrs=['bold'])}")
                     got_an_error = True
                     continue
-                except e:
+                except Exception as e:
                     print(f"{prefix}Test {colored_test_path}: {colored('Runtime Error', 'red', attrs=['bold'])}")
                     got_an_error = True
                     continue
