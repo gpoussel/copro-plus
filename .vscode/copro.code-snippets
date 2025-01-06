@@ -1,0 +1,57 @@
+{
+	"For-loop 0-n": {
+		"scope": "cpp",
+		"prefix": "for",
+		"body": [
+			"for (int i = 0; i < ${1:n}; i++) {",
+			"\t$0",
+			"}"
+		],
+		"description": "For-lopp 0-n"
+	},
+	"For-loop 1-n": {
+		"scope": "cpp",
+		"prefix": "for1",
+		"body": [
+			"for (int i = 1; i <= ${1:n}; i++) {",
+			"\t$0",
+			"}"
+		],
+		"description": "For-loop 1-n"
+	},
+	"Print": {
+		"scope": "cpp",
+		"prefix": "print",
+		"body": [
+			"cout << ${1} << nl;"
+		],
+		"description": "Print"
+	},
+	"Input Int": {
+		"scope": "cpp",
+		"prefix": "in",
+		"body": [
+			"int ${1};",
+			"cin >> ${1};"
+		],
+		"description": "Input Int"
+	},
+	"Input Long": {
+		"scope": "cpp",
+		"prefix": "inl",
+		"body": [
+			"long long ${1};",
+			"cin >> ${1};"
+		],
+		"description": "Input Long"
+	},
+	"Input String": {
+		"scope": "cpp",
+		"prefix": "ins",
+		"body": [
+			"string ${1};",
+			"cin >> ${1};"
+		],
+		"description": "Input String"
+	},
+}
