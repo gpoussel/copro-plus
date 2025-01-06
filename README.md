@@ -29,4 +29,10 @@ g++ -Wall -Wextra -Wconversion -static -DONLINE_JUDGE -Wl,--stack=268435456 -O2 
 
 ## Links
 
-- [Easy Codeforces problems to solve](https://codeforces.com/problemset?order=BY_SOLVED_DESC&tags=0-800)
+- [Codeforces Problems ⭐](https://codeforces.com/problemset?order=BY_SOLVED_DESC&tags=0-800)
+- [Codeforces Problems ⭐⭐](https://codeforces.com/problemset?order=BY_SOLVED_DESC&tags=801-1100)
+- [Codeforces Problems ⭐⭐⭐](https://codeforces.com/problemset?order=BY_SOLVED_DESC&tags=1101-1600)
+- [Codeforces Problems ⭐⭐⭐⭐](https://codeforces.com/problemset?order=BY_SOLVED_DESC&tags=1601-2000)
+- [Codeforces Problems ⭐⭐⭐⭐⭐](https://codeforces.com/problemset?order=BY_SOLVED_DESC&tags=2001-2500)
+- [Codeforces Problems ⭐⭐⭐⭐⭐⭐](https://codeforces.com/problemset?order=BY_SOLVED_DESC&tags=2501-3000)
+- [Codeforces Problems ⭐⭐⭐⭐⭐⭐⭐](https://codeforces.com/problemset?order=BY_SOLVED_DESC&tags=3001-4000)
