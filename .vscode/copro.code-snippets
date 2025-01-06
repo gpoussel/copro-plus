@@ -21,7 +21,7 @@
 	},
 	"Print": {
 		"scope": "cpp",
-		"prefix": "print",
+		"prefix": "prt",
 		"body": [
 			"cout << ${1} << nl;"
 		],
@@ -29,7 +29,7 @@
 	},
 	"Input Int": {
 		"scope": "cpp",
-		"prefix": "in",
+		"prefix": "ini",
 		"body": [
 			"int ${1};",
 			"cin >> ${1};"
@@ -53,5 +53,13 @@
 			"cin >> ${1};"
 		],
 		"description": "Input String"
+	},
+	"long long": {
+		"scope": "cpp",
+		"prefix": "ll",
+		"body": [
+			"long long ${1};"
+		],
+		"description": "long long"
 	},
 }
