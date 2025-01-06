@@ -8,7 +8,9 @@
 #include <iostream>
 #include <map>
 #include <numbers>
+#include <numeric>
 #include <set>
+#include <sstream>
 #include <string>
 #include <vector>
 using namespace std;
@@ -16,8 +18,6 @@ using namespace std;
 #define nl '\n'
 #define deb(x) cerr << #x " = " << x << nl
 #define EPSILON 1e-9
-#define equals(a, b) (fabs(a - b) < EPSILON)
-#define almost_equals(a, b) (fabs(a - b) < 1e-4)
 
 // HEADER
 
