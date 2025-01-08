@@ -54,6 +54,31 @@
 		],
 		"description": "Input String"
 	},
+	"Input Test Cases": {
+		"scope": "cpp",
+		"prefix": "intc",
+		"body": [
+			"int test_cases;",
+			"cin >> test_cases;",
+			"for (int i = 0; i < test_cases; i++) {",
+			"\t$0",
+			"}"
+		],
+		"description": "Input Test Cases"
+	},
+	"Input Array": {
+		"scope": "cpp",
+		"prefix": "inv",
+		"body": [
+			"int length;",
+			"cin >> length;",
+			"vector<int> arr(length);",
+			"for (int j = 0; j < length; j++) {",
+			"\tcin >> arr[j];",
+			"}"
+		],
+		"description": "Input Test Cases"
+	},
 	"long long": {
 		"scope": "cpp",
 		"prefix": "ll",
