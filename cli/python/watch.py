@@ -6,6 +6,7 @@ from termcolor import colored, cprint
 from _common import codeforces_parse_url
 import http.server
 import simplejson as json
+import subprocess
 
 BIND_HOST = '127.0.0.1'
 BIND_PORT = 10046
@@ -63,6 +64,7 @@ def process_received_json(data_string):
         print(f"Saved test files {colored_test_number}")
     print()
     print()
+    subprocess.run(["C:\\Users\\gpous\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\code.cmd", source_file.absolute()])
 
 class CompetitiveCompanionHandler(http.server.BaseHTTPRequestHandler):
     def log_message(self, format, *args):
