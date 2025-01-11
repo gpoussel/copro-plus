@@ -22,15 +22,6 @@ using namespace std;
 // Codeforces - Codeforces Round 971 (Div. 4)
 // B. osu!mania
 
-const string join(vector<string> v, const char delim)
-{
-    return accumulate(begin(v), end(v), string(),
-                      [delim](const string &ss, const string &s)
-                      {
-                          return ss.empty() ? s : ss + delim + s;
-                      });
-}
-
 int main()
 {
     int test_cases;
