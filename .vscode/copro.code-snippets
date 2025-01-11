@@ -21,18 +21,26 @@
 	},
 	"Print": {
 		"scope": "cpp",
-		"prefix": "prt",
+		"prefix": "cou",
 		"body": [
 			"cout << ${1} << nl;"
 		],
 		"description": "Print"
 	},
+	"Print with Yes-No": {
+		"scope": "cpp",
+		"prefix": "couy",
+		"body": [
+			"cout << (${1} ? \"YES\" : \"NO\") << nl;"
+		],
+		"description": "Print with Yes-No"
+	},
 	"Input Int": {
 		"scope": "cpp",
 		"prefix": "ini",
 		"body": [
-			"int ${1};",
-			"cin >> ${1};"
+			"int ${1:n};",
+			"cin >> ${1:n};"
 		],
 		"description": "Input Int"
 	},
@@ -40,8 +48,8 @@
 		"scope": "cpp",
 		"prefix": "inl",
 		"body": [
-			"long long ${1};",
-			"cin >> ${1};"
+			"long long ${1:number};",
+			"cin >> ${1:number};"
 		],
 		"description": "Input Long"
 	},
@@ -49,8 +57,8 @@
 		"scope": "cpp",
 		"prefix": "ins",
 		"body": [
-			"string ${1};",
-			"cin >> ${1};"
+			"string ${1:str};",
+			"cin >> ${1:str};"
 		],
 		"description": "Input String"
 	},
