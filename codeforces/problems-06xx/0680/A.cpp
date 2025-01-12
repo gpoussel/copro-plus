@@ -32,21 +32,22 @@ int main()
         sum += arr[j];
     }
     sort(arr.begin(), arr.end(), greater<int>());
+    set<int> possible_sums;
+    possible_sums.insert(sum);
     for (int i = 0; i < 4; ++i)
     {
         if (arr[i] == arr[i + 1])
         {
             if (i < 3 && arr[i] == arr[i + 2])
             {
-                sum -= 3 * arr[i];
+                possible_sums.insert(sum - 3 * arr[i]);
             }
             else
             {
-                sum -= 2 * arr[i];
+                possible_sums.insert(sum - 2 * arr[i]);
             }
-            break;
         }
     }
-    cout << sum << nl;
+    cout << *min_element(possible_sums.begin(), possible_sums.end()) << nl;
     return 0;
 }
