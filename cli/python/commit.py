@@ -28,7 +28,7 @@ def commit_all():
         if file.endswith('.cpp') and file.startswith('codeforces/'):
             parts = file.split('/')
             problem_number = parts[-2]
-            problem_letter = parts[-1][0]
+            problem_letter = parts[-1].replace('.cpp', '')
             commit_codeforces_problem(problem_number, problem_letter)
 
 def commit_codeforces_problem(problem_number, problem_letter):
@@ -44,15 +44,7 @@ def commit_codeforces_problem(problem_number, problem_letter):
         print(f"Executable not found for {problem_number}{problem_letter}")
 
 def commit_codeforces(args):
-    problem_number = args[-1]
-    if problem_number[-1].isalpha():
-        problem_letters = [problem_number[-1]]
-        problem_number = problem_number[:-1]
-        mode = 'single'
-    else:
-        problem_letters = codeforces_list_letters(problem_number)
-        mode = 'all'
-
+    _, problem_number, problem_letters = codeforces_parse_problem_name(args)
     for letter in problem_letters:
         commit_codeforces_problem(problem_number, letter)
 

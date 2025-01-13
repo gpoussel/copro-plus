@@ -44,3 +44,15 @@ def codeforces_list_letters(problem_number):
         if len(letter) == 1:
             letters.append(letter)
     return letters
+
+def codeforces_parse_problem_name(problem_ref):
+    for i, c in enumerate(problem_ref):
+        if c.isalpha():
+            break
+    if i == len(problem_ref):
+        # Reference to all letters
+        return ('all', problem_ref, codeforces_list_letters(problem_ref))
+    else:
+        problem_number = problem_ref[:i]
+        problem_letter = problem_ref[i:]
+        return ('single', problem_number, [problem_letter])

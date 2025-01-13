@@ -1,4 +1,4 @@
-from _common import codeforces_list_letters, codeforces_get_path
+from _common import codeforces_get_path, codeforces_parse_problem_name
 from pathlib import Path
 from signal import signal, SIGTERM, SIGINT
 from sys import argv, exit
@@ -28,13 +28,7 @@ def print_output(result):
 def run_codeforces(args):
     forced = '!' in args
     problem_number = args[0]
-    if problem_number[-1].isalpha():
-        problem_letters = [problem_number[-1]]
-        problem_number = problem_number[:-1]
-        mode = 'single'
-    else:
-        problem_letters = codeforces_list_letters(problem_number)
-        mode = 'all'
+    mode, problem_number, problem_letters = codeforces_parse_problem_name(problem_number)
     
     prefix = "  " if mode == 'all' else ""
     for letter in problem_letters:
