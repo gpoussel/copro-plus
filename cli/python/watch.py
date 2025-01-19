@@ -64,7 +64,12 @@ def process_received_json(data_string):
         print(f"Saved test files {colored_test_number}")
     print()
     print()
-    subprocess.run(["C:\\Users\\gpous\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\code.cmd", source_file.absolute()])
+    for executable in ['codium', 'code']:
+        executable_path = subprocess.run(['where', executable], stdout=subprocess.PIPE)
+        if executable_path.returncode == 0:
+            absolute_executable_path = executable_path.stdout.decode('utf-8').strip().splitlines()[-1]
+            subprocess.run([absolute_executable_path, str(source_file)])
+            break
 
 class CompetitiveCompanionHandler(http.server.BaseHTTPRequestHandler):
     def log_message(self, format, *args):
